@@ -11,7 +11,7 @@ spotify
     .search({ type: 'album', query: 'Too low for zero' })
     .then(function(response) {
         // console.log(response.albums.items[0].images[0])
-        console.log(response.albums.items.artists)
+        // console.log(response.albums.items.artists)
         let artist = response.albums.items[0].artists[0].name
         let release = response.albums.items[0].release_date
         let albumName = response.albums.items[0].name
@@ -23,15 +23,15 @@ spotify
             .search({ type: 'artist', query: artist })
             .then(function(response) {
                 let genres = response.artists.items[0].genres
-                    // console.log(response);
-                    // console.log(response.artists)
-                    // console.log(response.artists.items[0])
-                    // console.log("Album Name: " + albumName)
-                    // console.log("Album cover URL: " + albumCoverL)
-                    // console.log("Artist Name: " + artist)
-                    // console.log("Release date: " + release)
-                    // console.log("Spotify page: " + url)
-                    // console.log("Genres : " + genres)
+                console.log(response);
+                console.log(response.artists)
+                console.log(response.artists.items[0])
+                console.log("Album Name: " + albumName)
+                console.log("Album cover URL: " + albumCoverL)
+                console.log("Artist Name: " + artist)
+                console.log("Release date: " + release)
+                console.log("Spotify page: " + url)
+                console.log("Genres : " + genres)
             })
             .catch(function(err) {
                 console.log(err);
