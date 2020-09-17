@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const sell = sequelize.define("sell", {
+    const forSale = sequelize.define("for_sale", {
         album_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -16,14 +16,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
-       genres: {
+        genres: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-       price: {
+        price: {
             type: DataTypes.DECIMAL,
             allowNull: false,
         }
     });
-    return sell;
+    return forSale;
 };
