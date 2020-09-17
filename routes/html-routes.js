@@ -8,7 +8,17 @@ module.exports = function(app) {
   app.get('/', (req, res) => {
     //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
     res.render('index');
-  });
+  }); 
+
+  app.get('/sell', (req, res) => { 
+    res.render('sell');
+  }); 
+
+  app.get('/buy', (req, res) => { 
+    res.render('buy');
+  }); 
+
+  
     
 //   app.get("/", (req, res) => {
 //     // If the user already has an account send them to the members page
