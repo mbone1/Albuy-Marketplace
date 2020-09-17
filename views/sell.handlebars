@@ -1,15 +1,41 @@
-<ul>
-  {{#each albums}}
-  	<li>
-  		<p><span class="label">Album Name</span> {{this.albumName}}</p>
-      <p><span class="label">Artist:</span> {{this.artist}}</p>
-      <p><span class="label">Release Date:</span> {{this.relDate}}</p> 
-      <p><span class="label">Spotify Page:</span> {{this.spotPage}}</p>
-      <p><span class="label">Genre:</span> {{this.genre}}</p>
+<nav class="topnavbar navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" id="title" href="#">Albums</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <button type="button" class="btn btn-secondary">Sell</button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Buy <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sell</a>
+            </li>
+        </ul>
 
-      <a href="/{{this.id}}">Update this quote</a>
-  	</li>
-  {{/each}}
-</ul>
+    </div> 
+</nav>
+
+<div class="container" id="album-container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="http://placekitten.com/200/200" alt="..." class="img-thumbnail">
+        </div>
+        <div class="col-md-8">
+            <ul>
+                <li>
+                    <p><span class="label">Album Name</span> {{this.albumName}}</p>
+                    <p><span class="label">Artist:</span> {{this.artist}}</p>
+                    <p><span class="label">Release Date:</span> {{this.relDate}}</p>
+                    <p><a href><span class="label">Spotify Page:</span> {{this.spotPage}}</p></a>
+                    <p><span class="label">Genre:</span> {{this.genre}}</p>
+                    <button type="button" class="btn btn-secondary">Sell</button>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</div>

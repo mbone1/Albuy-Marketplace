@@ -5,13 +5,18 @@ const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-  app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+  app.get('/', (req, res) => {
+    //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
+    res.render('index');
   });
+    
+//   app.get("/", (req, res) => {
+//     // If the user already has an account send them to the members page
+//     if (req.user) {
+//       res.redirect("/members");
+//     }
+//     res.sendFile(path.join(__dirname, "../public/signup.html"));
+//   });
 
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the members page
@@ -27,13 +32,12 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   }); 
 
-  
-  app.get("/main", (req, res) => {
+  app.get("/signup", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/main");
+      res.redirect("/members");
     }
-    res.sendFile(path.join(__dirname, "../views/layouts/main.handlebars"));
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
 };
