@@ -3,10 +3,11 @@ $(document).ready(() => {
     // and updates the HTML on the page
     $(".searchBtn").on("click", function(event) {
         event.preventDefault();
-        let searchName = $(".input").val()
+        let searchName = $("#input").val()
         $.get("/api/album_data/" + searchName).then(data => {
             console.log(data)
                 //data.albums.items.forEach(element => console.log(element))
+
             let artist = data.albums.items[0].artists[0].name;
             let release = data.albums.items[0].release_date
             let albumName = data.albums.items[0].name
@@ -15,6 +16,17 @@ $(document).ready(() => {
             $(".hello").text(artist);
         });
     });
+    $(".sellBtn").on("click", function(event) {
+        event.preventDefault();
+        let artists = $("#").text()
+        let release = $("#").text()
+        let albumName = $("#").text()
+        let albumCoverM = $("#").text()
+        let url = $("#").text()
+
+    })
+
+
 
 
 

@@ -34,8 +34,8 @@
         <div class="col-md-12">
             <nav class="navbar bg-dark">
                 <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" id="input" type="search" placeholder="Search" aria-label="Search">
+        <button class="searchBtn">Search</button>
                 </form>
             </nav>
         </div>
@@ -53,7 +53,7 @@
                     <p><span class="label">Release Date:</span> {{this.relDate}}</p>
                     <p><a href><span class="label">Spotify Page:</span> {{this.spotPage}}</p></a>
                     <p><span class="label">Genre:</span> {{this.genre}}</p>
-                    <button type="button" class="btn btn-secondary">Sell</button>
+                    <button type="button" class="btn btn-secondary" id="sellBtn">Sell</button>
                 </li>
 
             </ul>
