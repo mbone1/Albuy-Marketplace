@@ -4,7 +4,6 @@ const path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-
 module.exports = function(app) {
     app.get('/', (req, res) => {
         //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
@@ -44,7 +43,7 @@ module.exports = function(app) {
         }
         res.sendFile(path.join(__dirname, "../public/signup.html"));
     });
-=======
+
 module.exports = function (app) {
   app.get('/', (req, res) => {
     //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
@@ -82,4 +81,4 @@ module.exports = function (app) {
   });
 
 
-};
+}};
