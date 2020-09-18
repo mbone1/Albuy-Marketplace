@@ -56,35 +56,33 @@ module.exports = function(app) {
         }
     });
 
-
     app.get("/api/album_data/:albumSearch", async function(req, res) {
-        console.log(req.params.albumSearch)
+
         let albumResponse = await spotify.search({
             type: "album",
             query: req.params.albumSearch,
         });
-        console.log(albumResponse.albums.items[0])
+
         res.json(albumResponse);
     });
 
-    // app.get("/api/album_data/:albumSearch", function(req, res) {
-    //   res.send(req.params);
-    // });
+    // app.get("/api/album_data/:albumSearch", async function(req, res) {
+    //     let responseData = {
+    //         albumData: {},
+    //         artistData: {},
+    //     };
+    //     let albumResponse = await searchAlbum();
+    //     let artistResponse = await searchArtist(albumResponse);
 
-    // app.get("/api/album_data", async function(req, res) {
-    //   let responseData = {
-    //     albumData: {},
-    //     artistData: {},
-    //   };
-    //   let albumResponse = await searchAlbum;
-    //   let artistResponse = await searchArtist;
-    //   function searchAlbum() {}
-    //   function searchArtist() {}
+    //     function searchAlbum() { return spotify.search({ type: 'album', query: req.params.albumSearch }) }
 
-    //   responseData.albumData = albumResponse;
-    //   responseData.artistData = artistResponse;
+    //     function searchArtist(albumResponse) { return spotify.search({ type: 'artist', query: albumResponse.albums.items[0].artists[0].name }) }
 
-    //   res.json(responseData);
+    //     responseData.albumData = albumResponse;
+    //     responseData.artistData = artistResponse;
+
+    //     console.log(responseData)
+    //     res.json(responseData);
     // });
 
     // spotify
