@@ -16,12 +16,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        genres: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         price: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false,
         }
     });
