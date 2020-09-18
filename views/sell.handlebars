@@ -11,7 +11,7 @@
                 <a class="nav-link" href="#">Buy <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sell</a>
+                <a class="nav-link" href="">Sell</a>
             </li>
         </ul>
 
@@ -19,6 +19,10 @@
 </nav>
 
 <div class="container" id="album-container">
+    <form>
+        <input type="text" class="input" name="albumName">
+        <button class="searchBtn">Search</button>
+    </form>
     <div class="row">
         <div class="col-md-4">
             <img src="http://placekitten.com/200/200" alt="..." class="img-thumbnail">
@@ -26,6 +30,7 @@
         <div class="col-md-8">
             <ul>
                 <li>
+                    <p class="hello"></p>
                     <p><span class="label">Album Name</span> {{this.albumName}}</p>
                     <p><span class="label">Artist:</span> {{this.artist}}</p>
                     <p><span class="label">Release Date:</span> {{this.relDate}}</p>
@@ -39,3 +44,4 @@
     </div>
 
 </div>
+
