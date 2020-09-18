@@ -3,7 +3,7 @@
     "username": "root",
 
     "password": "",
-    "database": "albums_db",
+    "database": "albumDB",
 
     "host": "127.0.0.1",
     "dialect": "mysql"

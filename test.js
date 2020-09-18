@@ -32,6 +32,8 @@ spotify
                 console.log("Release date: " + release)
                 console.log("Spotify page: " + url)
                 console.log("Genres : " + genres)
+                console.log(albumCoverM)
+                console.log(albumCovers)
             })
             .catch(function(err) {
                 console.log(err);
