@@ -3,6 +3,7 @@ const path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+//const Album = require('../models/album');
 
 module.exports = function(app) {
   app.get('/', (req, res) => {
@@ -15,7 +16,15 @@ module.exports = function(app) {
   }); 
 
   app.get('/buy', (req, res) => { 
-    res.render('buy');
+    /* Album.buyAlbum(albums => {
+      res.render('/buy', {
+        albums: albums
+      })
+    })*/
+    //conection.query().then(data => res.render('/buy', {album: data}))
+    res.render('buy',{ 
+      albums:[{'artist':'artist'}]
+    });
   });  
 
   app.get('/login', (req, res) => { 

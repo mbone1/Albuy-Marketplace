@@ -36,14 +36,16 @@
     </div>
     <div class="col-md-8">
       <ul>
-        <li>
-          <p><span class="label">Album Name:</span> {{this.albumName}}</p>
-          <p><span class="label">Artist:</span> {{this.artist}}</p>
-          <p><span class="label">Release Date:</span> {{this.relDate}}</p>
-          <p><a href><span class="label">Spotify Page:</span> {{this.spotPage}}</p></a>
-          <p><span class="label">Genre:</span> {{this.genre}}</p>
-          <button type="button" class="btn btn-secondary">Buy</button>
-        </li>
+        {{#each albums}}
+          <li>
+            <p><span class="label">Album Name:</span> {{this.albumName}}</p>
+            <p><span class="label">Artist:</span> {{this.artist}}</p>
+            <p><span class="label">Release Date:</span> {{this.relDate}}</p>
+            <p><a href><span class="label">Spotify Page:</span> {{this.spotPage}}</p></a>
+            <p><span class="label">Genre:</span> {{this.genre}}</p>
+            <button type="button" class="btn btn-secondary">Buy</button>
+          </li>
+        {{/each}}
 
       </ul>
     </div>
