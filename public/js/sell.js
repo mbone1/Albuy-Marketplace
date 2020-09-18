@@ -16,17 +16,9 @@ $(document).ready(() => {
         });
     });
 
-
-
-
-
-
-
     // let album = ;
     // $.ajax({
     //     url: "/api/album_data",
     //     data: album
     // })
-
-
 });
