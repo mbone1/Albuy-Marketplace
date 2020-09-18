@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS `albums_db`;
-CREATE DATABASE `albums_db`;
