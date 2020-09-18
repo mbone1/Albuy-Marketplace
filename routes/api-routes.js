@@ -7,7 +7,6 @@ let spotify = new Spotify({
     secret: "aab284a311694e6a885d6c63436eb8f0",
 });
 
-
 module.exports = function(app) {
     // Using the passport.authenticate middleware with our local strategy.
     // If the user has valid login credentials, send them to the members page.
@@ -119,7 +118,6 @@ module.exports = function(app) {
     //     });
 
     // console.log(req)
-=======
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -169,4 +167,5 @@ module.exports = function (app) {
     }
   });
 
-};
+}};
+

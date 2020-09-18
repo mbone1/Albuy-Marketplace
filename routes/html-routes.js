@@ -5,7 +5,6 @@ const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 //const Album = require('../models/album');
 
-
 module.exports = function(app) {
   app.get('/', (req, res) => {
     //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
@@ -32,11 +31,19 @@ module.exports = function(app) {
     res.render('login');
   });   
 
-  app.get('/signup', (req, res) => { 
-    res.render('signup');
-  });  
+    app.get("/signup", (req, res) => {
+        // If the user already has an account send them to the members page
+        if (req.user) {
+            res.redirect("/members");
+        }
+        res.sendFile(path.join(__dirname, "../public/signup.html"));
+    });
 
- 
+module.exports = function (app) {
+  app.get('/', (req, res) => {
+    //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
+    res.render('index');
+  });
 
   
     
@@ -70,4 +77,5 @@ module.exports = function(app) {
   //   res.sendFile(path.join(__dirname, "../public/signup.html"));
   // });
 
-};
+
+}};
