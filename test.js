@@ -8,8 +8,11 @@ let spotify = new Spotify({
 });
 
 spotify
-    .search({ type: 'album', query: 'Too low for zero' })
-    .then(function(response) {
+    .search({
+        type: 'album',
+        query: 'Too low for zero'
+    })
+    .then(function (response) {
         // console.log(response.albums.items[0].images[0])
         // console.log(response.albums.items.artists)
         let artist = response.albums.items[0].artists[0].name
@@ -20,8 +23,11 @@ spotify
         let albumCovers = response.albums.items[0].images[2].url
         let url = 'https://open.spotify.com/artist/' + response.albums.items[0].artists[0].id
         spotify
-            .search({ type: 'artist', query: artist })
-            .then(function(response) {
+            .search({
+                type: 'artist',
+                query: artist
+            })
+            .then(function (response) {
                 let genres = response.artists.items[0].genres
                 console.log(response);
                 console.log(response.artists)
@@ -35,11 +41,11 @@ spotify
                 console.log(albumCoverM)
                 console.log(albumCovers)
             })
-            .catch(function(err) {
+            .catch(function (err) {
                 console.log(err);
             });
 
     })
-    .catch(function(err) {
+    .catch(function (err) {
         console.log(err);
     });
