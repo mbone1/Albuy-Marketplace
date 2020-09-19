@@ -13,18 +13,38 @@ $(document).ready(() => {
             let albumName = data.albums.items[0].name
             let albumCoverM = data.albums.items[0].images[1].url
             let url = 'https://open.spotify.com/artist/' + data.albums.items[0].artists[0].id
-            $(".hello").text(artist);
+            $("#albumCoverM").attr("src", albumCoverM);
+            $("#albumName").text(albumName);
+            $("#artist").text(artist);
+            $("#releaseDate").text(release);
+            $("#url").attr("href", url);
+            console.log(artist)
         });
     });
+
     $(".sellBtn").on("click", function(event) {
-        event.preventDefault();
-        let artists = $("#").text()
-        let release = $("#").text()
-        let albumName = $("#").text()
-        let albumCoverM = $("#").text()
-        let url = $("#").text()
+            event.preventDefault();
+            let newAlbum = {
+                artist: $("#").text(),
+                releasedate: $("#").text(),
+                albumName: $("#").text(),
+                albumCoverM: $("#").text(),
+                url: $("#").text(),
+                price: $("#").text()
+            }
 
-    })
+            console.log(newAlbum)
+
+            $.ajax("/api/album_data", {
+                type: "POST",
+                data: newAlbum
+            }).then(function() {
+                console.log("Album added to DB");
+            })
+        }
+
+    );
+})
 
 
 
@@ -33,12 +53,8 @@ $(document).ready(() => {
 
 
 
-
-    // let album = ;
-    // $.ajax({
-    //     url: "/api/album_data",
-    //     data: album
-    // })
-
-
-});
+// let album = ;
+// $.ajax({
+//     url: "/api/album_data",
+//     data: album
+// })
