@@ -1,19 +1,21 @@
 <nav class="topnavbar navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" id="title" href="/">Albums</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/buy">Buy <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/sell">Sell</a>
-      </li>
-    </ul>
+    <a class="navbar-brand" id="title" href="/">Albums</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/buy">Buy <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sell">Sell</a>
+            </li>
+        </ul>
+
 
   </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,23 +31,28 @@
   </div>
 </nav>
 
+ <form>
+        <input type="text" class="input" name="albumName">
+        <button id="searchBtnDB">Search</button>
+    </form>
+
 <div class="container" id="album-container">
-  <div class="row">
-    <div class="col-md-4">
-      <img src="http://placekitten.com/200/200" alt="..." class="img-thumbnail">
-    </div>
-    <div class="col-md-8">
-      <ul>
-        {{#each albums}}
-          <li>
-            <p><span class="label">Album Name:</span> {{this.albumName}}</p>
-            <p><span class="label">Artist:</span> {{this.artist}}</p>
-            <p><span class="label">Release Date:</span> {{this.relDate}}</p>
-            <p><a href><span class="label">Spotify Page:</span> {{this.spotPage}}</p></a>
-            <p><span class="label">Genre:</span> {{this.genre}}</p>
-            <button type="button" class="btn btn-secondary">Buy</button>
-          </li>
-        {{/each}}
+
+    <div class="row">
+        <div class="col-md-4">
+            <img src="" alt="..." class="img-thumbnail" id="albumCoverM">
+        </div>
+        <div class="col-md-8">
+            <ul>
+             
+                    <p><span class="label">Album Name: </span> <span class="albumInfo" id="albumName"> </span></p>
+                    <p><span class="label" >Artist: </span> <span class="albumInfo" id="artist"> </span></p>
+                    <p><span class="label" >Release Date: </span>  <span class="albumInfo" id="releaseDate"> </span></p>
+                    <p><span class="label">Genres: </span><span class="albumInfo" id="genres"></span> </span></p>
+                    <p><span class="label">Price: </span><span class="albumInfo" id="price"></span> </span></p>
+                    <button type="button" id="buyBtn" class="btn btn-secondary">Buy</button>
+               
+
 
       </ul>
     </div>
