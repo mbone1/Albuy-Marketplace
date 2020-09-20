@@ -1,73 +1,82 @@
 form.signup,
 form.login {
   margin-top: 50px;
-} 
-
-body { 
-  background-image: url('/assets/music3.png');
-
 }
 
-h1 { 
-  background-color: aqua;
-} 
+body {
+  background-image: url("/assets/music3.png");
+}
 
-h2 { 
+h1 {
+  background-color: aqua;
+}
+
+h2 {
   font-size: 35px;
   color: black;
   font-weight: bold;
-} 
+}
 
-.form-group { 
+.form-group {
   color: black;
   font-size: 18px;
-
 }
 
-.bg-light { 
+.bg-light {
   background-color: pink;
-} 
+}
 
-#title { 
+#title {
   font-size: 35px;
   color: bisque;
-} 
+}
 
-#album-container { 
-  background-color: rgb(71, 67, 67); 
-  padding: 25px; 
-  border-radius: 20px; 
+#album-container {
+  background-color: rgb(71, 67, 67);
+  padding: 25px;
+  border-radius: 20px;
   margin-top: 20px;
-} 
+  word-wrap: break-word;
+}
 
-.label { 
+.label {
   font-size: 24px;
   font-weight: bold;
-} 
+}
 
-.login { 
-  background-color: rgb(71, 67, 67);  
-  padding: 25px; 
-  border-radius: 20px; 
+.login {
+  background-color: rgb(71, 67, 67);
+  padding: 25px;
+  border-radius: 20px;
   margin-top: 20px;
-}  
+}
 
-.img-thumbnail { 
+.img-thumbnail {
   margin-top: 20px;
-} 
+}
 
-#search-btn { 
+#search-btn {
   color: black;
-} 
+}
 
-.btn-outline-success { 
-  color: beige; 
+.btn-outline-success {
+  color: beige;
   border-color: rgb(163, 96, 57);
 }
- .carousel .img-fluid { 
-   width: 700px; 
-   height: 700px; 
-   margin-top: 20px; 
-   margin-left: 30px;
+.carousel .img-fluid {
+  width: 700px;
+  height: 700px;
+  margin-top: 20px;
+  margin-left: 30px;
+} 
 
- }
+#album_info { 
+  color: white;
+  font-family: fantasy;
+} 
+
+.price { 
+  color: white; 
+  font-size: 24px; 
+  margin-left: 50px;
+}

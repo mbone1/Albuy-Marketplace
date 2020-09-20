@@ -17,20 +17,14 @@ module.exports = function(app) {
   }); 
 
   app.get('/buy', (req, res) => { 
-    /* Album.buyAlbum(albums => {
-      res.render('/buy', {
-        albums: albums
-      })
-    })*/
-    //conection.query().then(data => res.render('/buy', {album: data}))
-    res.render('buy',{ 
-      albums:[{'artist':'artist'}]
-    });
+    res.render('buy');
+      
+    
   });  
 
-  app.get('/login', (req, res) => { 
-    res.render('login');
-  });   
+  // app.get('/login', (req, res) => { 
+  //   res.render('login');
+  // });   
 
   app.get('/signup', (req, res) => { 
     res.render('signup');
@@ -48,24 +42,24 @@ module.exports = function(app) {
 //     res.sendFile(path.join(__dirname, "../public/signup.html"));
 //   });
 
-  // app.get("/login", (req, res) => {
-  //   // If the user already has an account send them to the members page
-  //   if (req.user) {
-  //     res.redirect("/members");
-  //   }
-  //   res.sendFile(path.join(__dirname, "../public/login.html"));
-  // });
+  app.get("/login", (req, res) => {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/sell");
+    }
+    res.sendFile(path.join(__dirname, "../views/login"));
+  });
 
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/members.html"));
-  }); 
+  //Here we've add our isAuthenticated middleware to this route.
+  //If a user who is not logged in tries to access this route they will be redirected to the signup page
+  // app.get("/sell", isAuthenticated, (req, res) => {
+  //   res.sendFile(path.join(__dirname, "../views/signup"));
+  // }); 
 
   // app.get("/signup", (req, res) => {
   //   // If the user already has an account send them to the members page
   //   if (req.user) {
-  //     res.redirect("/members");
+  //     res.redirect("/sell");
   //   }
   //   res.sendFile(path.join(__dirname, "../public/signup.html"));
   // });

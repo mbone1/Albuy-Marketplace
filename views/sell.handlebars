@@ -34,30 +34,37 @@
         <div class="col-md-12">
             <nav class="navbar bg-dark">
                 <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2 input" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn searchBtn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </nav>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <img src="http://placekitten.com/200/200" alt="..." class="img-thumbnail">
+        <div class="col-md-4" id="albumPic">
+            <img src="" alt="" class="">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8" id="album_info" style="visibility: hidden;">
             <ul>
                 <li>
                     <p class="hello"></p>
-                    <p><span class="label">Album Name</span> {{this.albumName}}</p>
-                    <p><span class="label">Artist:</span> {{this.artist}}</p>
-                    <p><span class="label">Release Date:</span> {{this.relDate}}</p>
-                    <p><a href><span class="label">Spotify Page:</span> {{this.spotPage}}</p></a>
-                    <p><span class="label">Genre:</span> {{this.genre}}</p>
-                    <button type="button" class="btn btn-secondary">Sell</button>
+                    <p><span class="label">Album Name: <span id="album"></span></span> {{hbsObj.albumName}}</p>
+                    <p><span class="label">Artist: <span id="artist"></span></span> {{artist}}</p>
+                    <p><span class="label">Release Date: <span id="release"></span></span> {{date}}</p>
+                    <p><a href={{url}} onclick="redirect(r)"><span class="label">Spotify Page: <span id="spotify"></span></span></p></a> 
+
+                    <button type="button" class="btn btn-secondary" id="sellBtn">Sell</button>
                 </li>
 
             </ul>
+            <form class="form-inline" id="form" style="visibility: hidden;">
+                <label class="sr-only" for="inlineFormInputName2">Name</label>
+                <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
+                    placeholder="Enter the $ sale price">
+                <button type="submit" class="btn btn-primary mb-2" id="submitBtn">Submit</button>
+            </form>
         </div>
     </div>
+</div>
 
 </div>
