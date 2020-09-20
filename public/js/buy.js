@@ -1,23 +1,24 @@
 $(document).ready(() => {
-    // This file just does a GET request to figure out which user is logged in
-    // and updates the HTML on the page
-    $(".searchBtn").on("click", function(event) {
+
+    $("#searchBtnDB").on("click", function(event) {
         event.preventDefault();
         let searchName = $(".input").val()
-        $.get("/api/album_data/" + searchName).then(data => {
+        $.get("/api/dbSearch/" + searchName).then(data => {
             console.log(data)
-            let artist = data.albums.items[0].artists[0].name;
-            let release = data.albums.items[0].release_date
-            let albumName = data.albums.items[0].name
-            let albumCoverM = data.albums.items[0].images[1].url
-            let url = 'https://open.spotify.com/artist/' + data.albums.items[0].artists[0].id
+            let artist = data.artist
+            console.log(artist)
+            let release = data.releaseDate
+            let albumName = data.albumName
+            let albumCoverM = data.albumCoverM
+            let genres = data.genres
+            let price = data.price
+            $("#albumCoverM").attr("src", albumCoverM);
+            $("#albumName").text(albumName);
+            $("#artist").text(artist);
+            $("#releaseDate").text(release);
+            $("#genres").text(genres);
+            $("#price").text('$' + price)
 
         });
-    });
-    
-    // let album = ;
-    // $.ajax({
-    //     url: "/api/album_data",
-    //     data: album
-    // })
+    })
 });
