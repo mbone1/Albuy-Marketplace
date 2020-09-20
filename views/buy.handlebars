@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="buy">Buy <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/buy">Buy <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="sell">Sell</a>
+                <a class="nav-link" href="/sell">Sell</a>
             </li>
         </ul>
 
@@ -20,7 +20,7 @@
 
  <form>
         <input type="text" class="input" name="albumName">
-        <button id="searchBtn">Search</button>
+        <button id="searchBtnDB">Search</button>
     </form>
 
 <div class="container" id="album-container">
@@ -30,14 +30,14 @@
         </div>
         <div class="col-md-8">
             <ul>
-                <li>
-                    <p><span class="label">Album Name</span> <span id="albumName"> </span></p>
-                    <p><span class="label" >Artist:</span> <span id="artist"> </span></p>
-                    <p><span class="label" >Release Date:</span>  <span id="releaseDate"> </span></p>
-                    <p><span class="label">Genres:</span><span id="genres"></span> </span></p>
-                    <p><span class="label">Price:</span><span id="price"></span> </span></p>
+             
+                    <p><span class="label">Album Name: </span> <span class="albumInfo" id="albumName"> </span></p>
+                    <p><span class="label" >Artist: </span> <span class="albumInfo" id="artist"> </span></p>
+                    <p><span class="label" >Release Date: </span>  <span class="albumInfo" id="releaseDate"> </span></p>
+                    <p><span class="label">Genres: </span><span class="albumInfo" id="genres"></span> </span></p>
+                    <p><span class="label">Price: </span><span class="albumInfo" id="price"></span> </span></p>
                     <button type="button" id="buyBtn" class="btn btn-secondary">Buy</button>
-                </li>
+               
 
             </ul>
         </div>

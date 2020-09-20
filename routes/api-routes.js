@@ -1,6 +1,5 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
-const sales = require("../models/sales")
 const passport = require("../config/passport");
 let Spotify = require("node-spotify-api");
 let spotify = new Spotify({
@@ -75,9 +74,6 @@ module.exports = function(app) {
     });
 
     app.post("/api/album_data", (req, res) => {
-        // console.log(res)
-        // console.log(db)
-        console.log(req.body.albumName)
         db.ForSale.create({
                 albumName: req.body.albumName,
                 albumCoverM: req.body.albumCoverM,
@@ -87,7 +83,8 @@ module.exports = function(app) {
                 price: req.body.price
             })
             .then(() => {
-                console.log("item sold");
+                res.json("Item placed for sale!")
+                console.log("Item put up for sale!");
             })
             .catch((err) => {
                 console.log(err)
@@ -95,12 +92,30 @@ module.exports = function(app) {
             });
     });
 
+    app.get("/api/dbSearch/:albumSearch", async function(req, res) {
+        // console.log(req)
 
+        const returnObj = await db.ForSale.findOne({
+            where: {
+                albumName: req.params.albumSearch
+            }
+        })
+        console.log(returnObj)
+        res.json(returnObj)
 
+        // const results = await sequelize.query('SELECT * FROM forsales WHERE albumName =' + req, { type: sequelize.QueryTypes.SELECT }); // SELECT query - no destructuring
 
+        // console.log(results)
 
-
-
+        //     let albumResponse = await searchDB();
+        //    function db.ForSale.findAll({
+        //         where: {
+        //             albumName: req.params.albumSearch
+        //         }
+        //     })
+        //     console.log(res)
+        // console.log(req)
+    })
 
 
     // app.get("/api/album_data/:albumSearch", async function(req, res) {

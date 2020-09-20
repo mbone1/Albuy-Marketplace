@@ -1,53 +1,55 @@
 form.signup,
 form.login {
-  margin-top: 50px;
-} 
-
-body { 
-  background-image: url('/assets/music3.png');
-
+    margin-top: 50px;
 }
 
-h1 { 
-  background-color: aqua;
-} 
-
-h2 { 
-  font-size: 35px;
-  color: black;
-  font-weight: bold;
-} 
-
-.form-group { 
-  color: black;
-  font-size: 18px;
-
+body {
+    background-image: url('/assets/music3.png');
 }
 
-.bg-light { 
-  background-color: pink;
-} 
+h1 {
+    background-color: aqua;
+}
 
-#title { 
-  font-size: 35px;
-  color: bisque;
-} 
+h2 {
+    font-size: 35px;
+    color: black;
+    font-weight: bold;
+}
 
-#album-container { 
-  background-color: rgb(71, 67, 67); 
-  padding: 25px; 
-  border-radius: 20px; 
-  margin-top: 20px;
-} 
+.form-group {
+    color: black;
+    font-size: 18px;
+}
 
-.label { 
-  font-size: 24px;
-  font-weight: bold;
-} 
+.bg-light {
+    background-color: pink;
+}
 
-.login { 
-  background-color: rgb(71, 67, 67);  
-  padding: 25px; 
-  border-radius: 20px; 
-  margin-top: 20px;
+.albumInfo {
+    color: whitesmoke
+}
+
+#title {
+    font-size: 35px;
+    color: bisque;
+}
+
+#album-container {
+    background-color: rgb(71, 67, 67);
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.label {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.login {
+    background-color: rgb(71, 67, 67);
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 20px;
 }
