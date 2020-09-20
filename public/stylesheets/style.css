@@ -26,6 +26,12 @@ h2 {
   background-color: pink;
 }
 
+.albumInfo {
+  color: whitesmoke; 
+  font-family: fantasy; 
+  font-size: 25px;
+}
+
 #title {
   font-size: 35px;
   color: bisque;
@@ -36,7 +42,6 @@ h2 {
   padding: 25px;
   border-radius: 20px;
   margin-top: 20px;
-  word-wrap: break-word;
 }
 
 .label {
@@ -70,13 +75,4 @@ h2 {
   margin-left: 30px;
 } 
 
-#album_info { 
-  color: white;
-  font-family: fantasy;
-} 
 
-.price { 
-  color: white; 
-  font-size: 24px; 
-  margin-left: 50px;
-}

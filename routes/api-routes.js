@@ -7,7 +7,6 @@ let spotify = new Spotify({
   secret: "aab284a311694e6a885d6c63436eb8f0",
 });
 
-
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -57,48 +56,85 @@ module.exports = function (app) {
     }
   });
 
+
   app.get("/api/album_data/:albumSearch", async function (req, res) {
+    let responseData = {
+      albumData: {},
+      artistData: {},
+    };
+    let albumResponse = await searchAlbum();
+    let artistResponse = await searchArtist(albumResponse);
 
-    let albumResponse = await spotify.search({
-      type: "album",
-      query: req.params.albumSearch,
-    });
+    function searchAlbum() { return spotify.search({ type: 'album', query: req.params.albumSearch }) }
 
-    res.json(albumResponse);  
-    let hbsObj = {
-      artist: "", 
-      release: "", 
-      albumName: "", 
-      albumCoverM: "", 
-      url: ""
-    }
-    hbsObj.artist = albumResponse.albums.items[0].artists[0].name;
-    hbsObj.release = albumResponse.albums.items[0].release_date
-    hbsObj.albumName = albumResponse.albums.items[0].name
-    hbsObj.albumCoverM = albumResponse.albums.items[0].images[1].url
-    hbsObj.url = 'https://open.spotify.com/artist/' + albumResponse.albums.items[0].artists[0].id
-    console.log(hbsObj);
-    //res.render('buy', hbsObj );
+    function searchArtist(albumResponse) { return spotify.search({ type: 'artist', query: albumResponse.albums.items[0].artists[0].name }) }
+    responseData.albumData = albumResponse;
+    responseData.artistData = artistResponse;
+    res.json(responseData);
   });
 
+  app.post("/api/album_data", (req, res) => {
+    db.ForSale.create({
+      albumName: req.body.albumName,
+      albumCoverM: req.body.albumCoverM,
+      artist: req.body.artist,
+      releaseDate: req.body.releaseDate,
+      genres: req.body.genres,
+      price: req.body.price
+    })
+      .then(() => {
+        res.json("Item placed for sale!")
+        console.log("Item put up for sale!");
+      })
+      .catch((err) => {
+        console.log(err)
+        res.status(401).json(err);
+      });
+  });
+
+  app.get("/api/dbSearch/:albumSearch", async function (req, res) {
+    // console.log(req)
+
+    const returnObj = await db.ForSale.findOne({
+      where: {
+        albumName: req.params.albumSearch
+      }
+    })
+    console.log(returnObj)
+    res.json(returnObj)
+
+    // const results = await sequelize.query('SELECT * FROM forsales WHERE albumName =' + req, { type: sequelize.QueryTypes.SELECT }); // SELECT query - no destructuring
+
+    // console.log(results)
+
+    //     let albumResponse = await searchDB();
+    //    function db.ForSale.findAll({
+    //         where: {
+    //             albumName: req.params.albumSearch
+    //         }
+    //     })
+    //     console.log(res)
+    // console.log(req)
+  })
+
+
   // app.get("/api/album_data/:albumSearch", async function(req, res) {
-  //     let responseData = {
-  //         albumData: {},
-  //         artistData: {},
-  //     };
-  //     let albumResponse = await searchAlbum();
-  //     let artistResponse = await searchArtist(albumResponse);
 
-  //     function searchAlbum() { return spotify.search({ type: 'album', query: req.params.albumSearch }) }
+  //     let albumResponse = await spotify.search({
+  //         type: "album",
+  //         query: req.params.albumSearch,
+  //     });
 
-  //     function searchArtist(albumResponse) { return spotify.search({ type: 'artist', query: albumResponse.albums.items[0].artists[0].name }) }
-
-  //     responseData.albumData = albumResponse;
-  //     responseData.artistData = artistResponse;
-
-  //     console.log(responseData)
-  //     res.json(responseData);
+  //     res.json(albumResponse);
   // });
+
+
+
+
+
+
+
+
 
   // spotify
   //     .search({ type: 'album', query: 'Dark side of the moon' })
@@ -133,4 +169,55 @@ module.exports = function (app) {
   //     });
 
   // console.log(req)
+  module.exports = function (app) {
+    // Using the passport.authenticate middleware with our local strategy.
+    // If the user has valid login credentials, send them to the members page.
+    // Otherwise the user will be sent an error
+    app.post("/api/login", passport.authenticate("local"), (req, res) => {
+      // Sending back a password, even a hashed password, isn't a good idea
+      res.json({
+        email: req.user.email,
+        id: req.user.id,
+      });
+    });
+
+    // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
+    // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+    // otherwise send back an error
+    app.post("/api/signup", (req, res) => {
+      db.User.create({
+        email: req.body.email,
+        password: req.body.password,
+      })
+        .then(() => {
+          res.redirect(307, "/api/login");
+        })
+        .catch((err) => {
+          res.status(401).json(err);
+        });
+    });
+
+    // Route for logging user out
+    app.get("/logout", (req, res) => {
+      req.logout();
+      res.redirect("/");
+    });
+
+    // Route for getting some data about our user to be used client side
+    app.get("/api/user_data", (req, res) => {
+      if (!req.user) {
+        // The user is not logged in, send back an empty object
+        res.json({});
+      } else {
+        // Otherwise send back the user's email and id
+        // Sending back a password, even a hashed password, isn't a good idea
+        res.json({
+          email: req.user.email,
+          id: req.user.id,
+        });
+      }
+    });
+
+  }
 };
+

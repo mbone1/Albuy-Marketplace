@@ -7,11 +7,13 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/buy">Buy <span class="sr-only">(current)</span></a>
-            </li>
+
             <li class="nav-item">
-                <a class="nav-link" href="/sell">Sell</a>
+                <a class="nav-link" href="/buy">Buy </span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/sell">Sell<span class="sr-only">(current)</span></a>
+
             </li>
         </ul>
 
@@ -27,34 +29,33 @@
 
         </ul>
     </div>
-</nav>
+</nav> 
+<div class="row">
+  <div class="col-md-12">
+    <nav class="navbar bg-dark">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2 input" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn searchBtn btn-outline-success my-2 my-sm-0" id="searchBtnDB">Search</button>
+      </form>
+    </nav>
+  </div>
+</div>
+<div class="container" id="album-container" style="visibility: hidden;">
 
-<div class="container" id="album-container">
     <div class="row">
-        <div class="col-md-12">
-            <nav class="navbar bg-dark">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2 input" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn searchBtn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </nav>
+        <div class="col-md-4">
+            <img src="" alt="" class="" id="albumCoverM">
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4" id="albumPic">
-            <img src="" alt="" class="">
-        </div>
-        <div class="col-md-8" id="album_info" style="visibility: hidden;">
+        <div class="col-md-8" id="album_info">
             <ul>
-                <li>
-                    <p class="hello"></p>
-                    <p><span class="label">Album Name: <span id="album"></span></span> {{hbsObj.albumName}}</p>
-                    <p><span class="label">Artist: <span id="artist"></span></span> {{artist}}</p>
-                    <p><span class="label">Release Date: <span id="release"></span></span> {{date}}</p>
-                    <p><a href={{url}} onclick="redirect(r)"><span class="label">Spotify Page: <span id="spotify"></span></span></p></a> 
 
-                    <button type="button" class="btn btn-secondary" id="sellBtn">Sell</button>
-                </li>
+                <p><span class="label">Album Name: </span> <span class="albumInfo" id="albumName"> </span></p>
+                <p><span class="label">Artist: </span> <span class="albumInfo" id="artist"> </span></p>
+                <p><span class="label">Release Date: </span> <span class="albumInfo" id="releaseDate"> </span></p>
+                <p><span class="label">Genres: </span><span class="albumInfo" id="genres"></span> </span></p>
+                <span class="albumInfo">Enter price here: </span><input id="price"></input>
+                <button type="button" id="sellBtn" class="btn btn-secondary">Sell</button>
+
 
             </ul>
             <form class="form-inline" id="form" style="visibility: hidden;">
@@ -65,6 +66,4 @@
             </form>
         </div>
     </div>
-</div>
-
 </div>
