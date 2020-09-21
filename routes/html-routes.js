@@ -1,8 +1,8 @@
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
-
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const sales = require("../models/sales");
 //const Album = require('../models/album');
 
 module.exports = function(app) {
@@ -20,7 +20,7 @@ module.exports = function(app) {
     app.get('/login', (req, res) => {
         res.render('login');
     });
-
+};
     // app.get("/signup", (req, res) => {
     //     // If the user already has an account send them to the members page
     //     if (req.user) {
@@ -66,8 +66,10 @@ module.exports = function(app) {
   // }); 
 }
 
-<<<<<<< HEAD
-=======
+
+
 
 }};
->>>>>>> 55f9ac7d6f59c9dfec96f98501e4ed3705f15cde
+
+
+
