@@ -6,9 +6,7 @@ $(document).ready(() => {
         albumInfo.style.visibility = "visible";
         let searchName = $(".input").val()
         $.get("/api/dbSearch/" + searchName).then(data => {
-            console.log(data)
             let artist = data.artist
-            console.log(artist)
             let release = data.releaseDate
             let albumName = data.albumName
             let albumCoverM = data.albumCoverM
