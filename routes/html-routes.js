@@ -66,3 +66,8 @@ module.exports = function(app) {
   // }); 
 }
 
+<<<<<<< HEAD
+=======
+
+}};
+>>>>>>> 55f9ac7d6f59c9dfec96f98501e4ed3705f15cde
