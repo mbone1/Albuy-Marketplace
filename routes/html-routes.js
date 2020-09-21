@@ -8,7 +8,10 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
 
     app.get('/', (req, res) => {
-        res.render('index');
+        res.json(path.join(__dirname, "index"));
+
+
+        // res.render('index');
     });
 
     app.get('/sell', (req, res) => {
@@ -57,4 +60,4 @@ module.exports = function(app) {
     // });
 
 
-
+}
