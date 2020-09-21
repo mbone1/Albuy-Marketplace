@@ -9,6 +9,7 @@ module.exports = function(app) {
 
     app.get('/', (req, res) => {
         // res.json(path.join(__dirname, "index"));
+
         res.render('index');
     });
 
@@ -56,4 +57,12 @@ module.exports = function(app) {
 //     res.render('buy', {
 //         albums: [{ 'artist': 'artist' }]
 //     });
+
 // });
+
+// });
+
+
+}
+
+
