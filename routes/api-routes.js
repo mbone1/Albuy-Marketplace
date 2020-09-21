@@ -51,6 +51,7 @@ module.exports = function(app) {
     });
 
 
+
     app.get("/api/album_data/:albumSearch", async function(req, res) {
         let responseData = {
             albumData: {},
@@ -98,29 +99,9 @@ module.exports = function(app) {
     app.get("/api/dbSearch/:dbSearch", async function(req, res) {
         const returnObj = await db.ForSale.findOne({
             where: {
-
                 albumName: req.params.dbSearch,
             },
         });
         res.json(returnObj);
     });
 };
-
-                albumName: req.params.albumSearch
-            }
-        })
-        console.log(returnObj)
-        res.json(returnObj)
-
-
-
-
-
-
-
-
-
-    })
-}
-
-
