@@ -6,10 +6,13 @@ const exphbs = require("express-handlebars")
 const morgan = require("morgan")
     // Requiring passport as we've configured it
 const passport = require("./config/passport");
+
 require('dotenv').config();
 console.log(process.env)
     // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
+
+
 const db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication

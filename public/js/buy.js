@@ -5,6 +5,7 @@ $(document).ready(() => {
         const albumInfo = document.querySelector("#album-container");
         albumInfo.style.visibility = "visible";
         let searchName = $(".input").val()
+
         $.get("/api/dbSearch/" + searchName).then(albumResponse => {
             let artist = albumResponse.artist
             let release = albumResponse.releaseDate
@@ -12,6 +13,7 @@ $(document).ready(() => {
             let albumCoverM = albumResponse.albumCoverM
             let genres = albumResponse.genres
             let price = albumResponse.price
+
             $("#albumCoverM").attr("src", albumCoverM);
             $("#albumName").text(albumName);
             $("#artist").text(artist);

@@ -99,6 +99,7 @@ module.exports = function(app) {
     app.get("/api/dbSearch/:dbSearch", async function(req, res) {
         const returnObj = await db.ForSale.findOne({
             where: {
+
                 albumName: req.params.dbSearch,
             },
         });
