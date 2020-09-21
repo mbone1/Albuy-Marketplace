@@ -35,11 +35,7 @@ module.exports = function(app) {
             });
     });
 
-    // Route for logging user out
-    app.get("/logout", (req, res) => {
-        req.logout();
-        res.redirect("/");
-    });
+    //     function searchAlbum() { return spotify.search({ type: 'album', query: req.params.albumSearch }) }
 
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", (req, res) => {
@@ -56,32 +52,58 @@ module.exports = function(app) {
         }
     });
 
+
     app.get("/api/album_data/:albumSearch", async function(req, res) {
+        let responseData = {
+            albumData: {},
+            artistData: {},
+        };
+        let albumResponse = await searchAlbum();
+        let artistResponse = await searchArtist(albumResponse);
 
-        let albumResponse = await spotify.search({
-            type: "album",
-            query: req.params.albumSearch,
-        });
+        function searchAlbum() { return spotify.search({ type: 'album', query: req.params.albumSearch }) }
 
-        res.json(albumResponse);
+        function searchArtist(albumResponse) { return spotify.search({ type: 'artist', query: albumResponse.albums.items[0].artists[0].name }) }
+        responseData.albumData = albumResponse;
+        responseData.artistData = artistResponse;
+        res.json(responseData);
+    });
+
+    app.post("/api/album_data", (req, res) => {
+        db.ForSale.create({
+                albumName: req.body.albumName,
+                albumCoverM: req.body.albumCoverM,
+                artist: req.body.artist,
+                releaseDate: req.body.releaseDate,
+                genres: req.body.genres,
+                price: req.body.price
+            })
+            .then(() => {
+                res.json("Item placed for sale!")
+                console.log("Item put up for sale!");
+            })
+            .catch((err) => {
+                console.log(err)
+                res.status(401).json(err);
+            });
+    });
+
+    app.get("/api/dbSearch/:albumSearch", async function(req, res) {
+        // console.log(req)
+
+        const returnObj = await db.ForSale.findOne({
+            where: {
+                albumName: req.params.albumSearch
+            }
+        })
+        console.log(returnObj)
+        res.json(returnObj)
+
+
+
+
+
+
+
     })
-};
-
-// app.get("/api/album_data/:albumSearch", async function(req, res) {
-//     let responseData = {
-//         albumData: {},
-//         artistData: {},
-//     };
-//     let albumResponse = await searchAlbum();
-//     let artistResponse = await searchArtist(albumResponse);
-
-//     function searchAlbum() { return spotify.search({ type: 'album', query: req.params.albumSearch }) }
-
-//     function searchArtist(albumResponse) { return spotify.search({ type: 'artist', query: albumResponse.albums.items[0].artists[0].name }) }
-
-//     responseData.albumData = albumResponse;
-//     responseData.artistData = artistResponse;
-
-//     console.log(responseData)
-//     res.json(responseData);
-// });
+}

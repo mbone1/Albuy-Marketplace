@@ -1,29 +1,35 @@
 module.exports = function (sequelize, DataTypes) {
-    const forSale = sequelize.define("for_sale", {
-        album_name: {
+    const ForSale = sequelize.define("ForSale", {
+        albumName: {
             type: DataTypes.STRING,
-            allowNull: false,
+            defaultValue: 'unknown',
+            //  allowNull: false,
+        },
+        albumCoverM: {
+            type: DataTypes.STRING,
+            //  allowNull: false,
+            defaultValue: 'unknown',
         },
         artist: {
             type: DataTypes.STRING,
-            allowNull: false,
+            //  allowNull: false,
+            defaultValue: 'unknown',
         },
-        release_date: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
-        spotify_url: {
+        releaseDate: {
             type: DataTypes.STRING,
-            allowNull: false,
+            //  allowNull: false,
+            defaultValue: 'unknown',
         },
         genres: {
             type: DataTypes.STRING,
-            allowNull: false,
+            //  allowNull: false,
+            defaultValue: 'unknown',
         },
         price: {
-            type: DataTypes.DECIMAL,
-            allowNull: false,
+            type: DataTypes.STRING,
+            //  allowNull: false,
+            defaultValue: 'unknown',
         }
     });
-    return forSale;
+    return ForSale;
 };
