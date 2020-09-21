@@ -14,14 +14,6 @@ $(document).ready(() => {
             let genres = albumResponse.genres
             let price = albumResponse.price
 
-        $.get("/api/dbSearch/" + searchName).then(data => {
-            let artist = data.artist
-            let release = data.releaseDate
-            let albumName = data.albumName
-            let albumCoverM = data.albumCoverM
-            let genres = data.genres
-            let price = data.price
-
             $("#albumCoverM").attr("src", albumCoverM);
             $("#albumName").text(albumName);
             $("#artist").text(artist);
