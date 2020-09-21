@@ -2,6 +2,8 @@
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars")
+
+const morgan = require("morgan")
     // Requiring passport as we've configured it
 const passport = require("./config/passport");
 require('dotenv').config();
@@ -12,6 +14,7 @@ const db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
+app.use(morgan("dev"))
 app.use(express.urlencoded({
     extended: true
 }));
