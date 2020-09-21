@@ -35,11 +35,7 @@ module.exports = function(app) {
             });
     });
 
-    // Route for logging user out
-    app.get("/logout", (req, res) => {
-        req.logout();
-        res.redirect("/");
-    });
+    //     function searchAlbum() { return spotify.search({ type: 'album', query: req.params.albumSearch }) }
 
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", (req, res) => {
@@ -103,69 +99,14 @@ module.exports = function(app) {
         console.log(returnObj)
         res.json(returnObj)
 
-        // const results = await sequelize.query('SELECT * FROM forsales WHERE albumName =' + req, { type: sequelize.QueryTypes.SELECT }); // SELECT query - no destructuring
 
-        // console.log(results)
 
-        //     let albumResponse = await searchDB();
-        //    function db.ForSale.findAll({
-        //         where: {
-        //             albumName: req.params.albumSearch
-        //         }
-        //     })
-        //     console.log(res)
-        // console.log(req)
+
+
+
+
+
+
     })
 }
 
-// app.get("/api/album_data/:albumSearch", async function(req, res) {
-
-//     let albumResponse = await spotify.search({
-//         type: "album",
-//         query: req.params.albumSearch,
-//     });
-
-//     res.json(albumResponse);
-// });
-
-
-
-
-
-
-
-
-
-// spotify
-//     .search({ type: 'album', query: 'Dark side of the moon' })
-//     .then(function(albumResponse) {
-//         let artist = albumResponse.albums.items[0].artists[0].name
-//         let release = albumResponse.albums.items[0].release_date
-//         let albumName = albumResponse.albums.items[0].name
-//         let albumCoverM = albumResponse.albums.items[0].images[1].url
-//         let url = 'https://open.spotify.com/artist/' + albumResponse.albums.items[0].artists[0].id
-//         albumData = albumResponse;
-//         spotify
-//             .search({ type: 'artist', query: artist })
-//             .then(function(artistResponse) {
-//                 let genres = artistResponse.artists.items[0].genres
-//                 console.log("Album Name: " + albumName)
-//                 console.log("Album cover URL: " + albumCoverM)
-//                 console.log("Artist Name: " + artist)
-//                 console.log("Release date: " + release)
-//                 console.log("Spotify page: " + url)
-//                 console.log("Genres : " + genres)
-//                 artistData = artistResponse;
-//             }).then(function() {
-//                 res.json(responseData)
-//             })
-//             .catch(function(err) {
-//                 console.log(err);
-//             });
-
-//     })
-//     .catch(function(err) {
-//         console.log(err);
-//     });
-
-// console.log(req)
