@@ -58,7 +58,3 @@ module.exports = function(app) {
 //         albums: [{ 'artist': 'artist' }]
 //     });
 // });
-
-
-}
-
