@@ -1,10 +1,10 @@
 $(document).ready(() => {
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
-    $("#searchBtnDB").on("click", function(event) {
+    $("#searchBtn").on("click", function(event) {
         event.preventDefault();
-        //const albumInfo = document.querySelector("#album-container");  
-        //albumInfo.style.visibility = "visible"; 
+        const albumInfo = document.querySelector("#album-container");
+        albumInfo.style.visibility = "visible";
         let searchName = $(".input").val()
         $.get("/api/album_data/" + searchName).then(data => {
             let artist = data.albumData.albums.items[0].artists[0].name;
@@ -37,6 +37,8 @@ $(document).ready(() => {
             data: albumObj
         }).then(function() {
             console.log("Album added to DB");
+            $("#placedForSale").attr("style", 'visible')
+            $("#price").val("");
         })
 
     });
