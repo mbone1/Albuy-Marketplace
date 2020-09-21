@@ -10,7 +10,6 @@ module.exports = function(app) {
     app.get('/', (req, res) => {
         // res.json(path.join(__dirname, "index"));
 
-
         res.render('index');
     });
 
@@ -24,6 +23,7 @@ module.exports = function(app) {
         res.render('login');
     });
 };
+
 // app.get("/signup", (req, res) => {
 //     // If the user already has an account send them to the members page
 //     if (req.user) {
@@ -57,8 +57,12 @@ module.exports = function(app) {
 //     res.render('buy', {
 //         albums: [{ 'artist': 'artist' }]
 //     });
+
+// });
+
 // });
 
 
 }
+
 

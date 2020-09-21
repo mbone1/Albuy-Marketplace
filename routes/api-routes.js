@@ -3,8 +3,8 @@ const db = require("../models");
 const passport = require("../config/passport");
 let Spotify = require("node-spotify-api");
 let spotify = new Spotify({
-    id: "12e1a356003a4885b03ca37e142d8a75",
-    secret: "aab284a311694e6a885d6c63436eb8f0",
+    id: process.env.id,
+    secret: process.env.secret,
 });
 
 module.exports = function(app) {
@@ -35,8 +35,6 @@ module.exports = function(app) {
             });
     });
 
-    //     function searchAlbum() { return spotify.search({ type: 'album', query: req.params.albumSearch }) }
-
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", (req, res) => {
         if (!req.user) {
@@ -61,13 +59,22 @@ module.exports = function(app) {
         let albumResponse = await searchAlbum();
         let artistResponse = await searchArtist(albumResponse);
 
-        function searchAlbum() { return spotify.search({ type: 'album', query: req.params.albumSearch }) }
+        function searchAlbum() {
+            return spotify.search({ type: "album", query: req.params.albumSearch });
+        }
 
-        function searchArtist(albumResponse) { return spotify.search({ type: 'artist', query: albumResponse.albums.items[0].artists[0].name }) }
+        function searchArtist(albumResponse) {
+            return spotify.search({
+                type: "artist",
+                query: albumResponse.albums.items[0].artists[0].name,
+            });
+        }
         responseData.albumData = albumResponse;
         responseData.artistData = artistResponse;
         res.json(responseData);
     });
+
+
 
     app.post("/api/album_data", (req, res) => {
         db.ForSale.create({
@@ -76,23 +83,29 @@ module.exports = function(app) {
                 artist: req.body.artist,
                 releaseDate: req.body.releaseDate,
                 genres: req.body.genres,
-                price: req.body.price
+                price: req.body.price,
             })
             .then(() => {
-                res.json("Item placed for sale!")
+                res.json("Item placed for sale!");
                 console.log("Item put up for sale!");
             })
             .catch((err) => {
-                console.log(err)
+                console.log(err);
                 res.status(401).json(err);
             });
     });
 
-    app.get("/api/dbSearch/:albumSearch", async function(req, res) {
-        // console.log(req)
-
+    app.get("/api/dbSearch/:dbSearch", async function(req, res) {
         const returnObj = await db.ForSale.findOne({
             where: {
+
+                albumName: req.params.dbSearch,
+            },
+        });
+        res.json(returnObj);
+    });
+};
+
                 albumName: req.params.albumSearch
             }
         })
@@ -109,4 +122,5 @@ module.exports = function(app) {
 
     })
 }
+
 
