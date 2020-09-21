@@ -1,7 +1,9 @@
 $(document).ready(() => {
 
-    $("#searchBtnDB").on("click", function(event) {
+    $("#searchBtnDB").on("click", function (event) {
         event.preventDefault();
+        const albumInfo = document.querySelector("#album-container");
+        albumInfo.style.visibility = "visible";
         let searchName = $(".input").val()
         $.get("/api/dbSearch/" + searchName).then(data => {
             console.log(data)
